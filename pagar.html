@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento | Matias Invest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style> body { font-family: 'Inter', sans-serif; } .toast { animation: slideUp 0.3s ease; } @keyframes slideUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } } </style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+    <div class="max-w-md mx-auto px-4 py-8">
+        <div class="bg-slate-900 rounded-xl p-6 border border-slate-800">
+            <div class="flex items-center gap-3 mb-6"><div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center"><i data-lucide="zap" class="w-5 h-5 text-white"></i></div><div><h1 class="text-lg font-bold text-white">Liberar Carteira Completa</h1><p class="text-xs text-cyan-400">Acesso vitalício</p></div></div>
+            <div class="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-4 mb-6"><p class="text-3xl font-bold text-white">R$ 44,90</p><p class="text-xs text-slate-400 mt-1">Pagamento único</p></div>
+            <div id="step1"><p class="text-sm font-semibold text-white mb-3">1. Pague com Pix Copia e Cola</p><div class="bg-slate-800 rounded-lg p-3 mb-3 relative"><p class="text-xs text-slate-300 break-all pr-8">00020101021126580014br.gov.bcb.pix0136bee17ddb-eaf7-4f23-b50e-b35da280cd5d520400005303986540544.905802BR5920BERNARDO M B PEREIRA6013BELO HORIZONT62070503***63048363</p><button onclick="copiarPix()" class="absolute top-2 right-2 p-1.5 bg-slate-700 hover:bg-slate-600 rounded"><i data-lucide="copy" class="w-4 h-4 text-slate-300"></i></button></div><button onclick="copiarPix()" class="w-full bg-slate-800 border border-slate-700 text-white font-semibold py-3 rounded-lg mb-4 hover:bg-slate-700 transition">Copiar Código Pix</button><button onclick="mostrarStep2()" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold py-3 rounded-lg hover:opacity-90 transition">Já paguei o Pix</button></div>
+            <div id="step2" class="hidden"><p class="text-sm font-semibold text-white mb-2">2. Digite o código de liberação</p><p class="text-xs text-slate-400 mb-4">Você recebe o código no WhatsApp após pagar.</p><input id="tokenInput" type="text" placeholder="Digite o código" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white mb-4 focus:border-cyan-500 focus:outline-none uppercase"><button onclick="validarToken()" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold py-3 rounded-lg mb-3 hover:opacity-90 transition">Liberar Acesso Agora</button><a href="https://wa.me/5533991925305?text=Oi%20Bernardo,%20paguei%20os%20R$%2044,90.%20Me%20envia%20o%20código" class="block text-center text-sm text-cyan-400 hover:text-cyan-300">Não recebeu o código? Falar no WhatsApp</a></div>
+        </div>
+    </div>
+    <div id="toast" class="hidden fixed bottom-4 left-1/2 -translate-x-1/2 bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-semibold toast">Pix copiado!</div>
+    <script>
+        lucide.createIcons();
+        const PIX_COPIA_COLA = "00020101021126580014br.gov.bcb.pix0136bee17ddb-eaf7-4f23-b50e-b35da280cd5d520400005303986540544.905802BR5920BERNARDO M B PEREIRA6013BELO HORIZONT62070503***63048363";
+        const TOKEN_VALIDO = "MATIAS44";
+        function copiarPix() { navigator.clipboard.writeText(PIX_COPIA_COLA); const toast = document.getElementById('toast'); toast.classList.remove('hidden'); setTimeout(() => toast.classList.add('hidden'), 2000); }
+        function mostrarStep2() { document.getElementById('step1').classList.add('hidden'); document.getElementById('step2').classList.remove('hidden'); document.getElementById('tokenInput').focus(); }
+        function validarToken() { const token = document.getElementById('tokenInput').value.trim().toUpperCase(); if (token === TOKEN_VALIDO) { window.location.href = 'index.html?liberado=' + token; } else { alert('Código inválido. Confere no WhatsApp com o Bernardo.'); } }
+    </script>
+</body>
+</html>
