@@ -19,16 +19,29 @@
     </div>
     <div id="toast" class="hidden fixed bottom-4 left-1/2 -translate-x-1/2 bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-semibold toast">Pix copiado!</div>
     <script>
-        lucide.createIcons();
-        const PIX_COPIA_COLA = "00020101021126580014br.gov.bcb.pix0136bee17ddb-eaf7-4f23-b50e-b35da280cd5d520400005303986540544.905802BR5920BERNARDO M B PEREIRA6013BELO HORIZONT62070503***63048363";
-        const TOKEN_VALIDO = "MATIAS44";
-        function copiarPix() { navigator.clipboard.writeText(PIX_COPIA_COLA); const toast = document.getElementById('toast'); toast.classList.remove('hidden'); setTimeout(() => toast.classList.add('hidden'), 2000); }
-     function validarToken() { 
-    const token = document.getElementById('tokenInput').value;
-    if (token === TOKEN_VALIDO) {
-        // Se o código tiver certo, manda pro site novo
-        window.location.href = 'https://matiasbernardo8888-lab.github.io/acessoINVEST/';
-    } else {
-        alert('Código inválido! Paga o Pix primeiro.');
+    lucide.createIcons();
+    
+    const PIX_COPIA_COLA = "00020101021126580014br.gov.bcb.pix0136cae7-4f23-b50e-b35d28cc65d204000053039865802BR5925MATIAS BERNARDO DA SILVA6009SAO PAULO61080540900062070503***6304A8D7";
+    const TOKEN_VALIDO = "MATIAS44";
+    
+    function copiarPix() { 
+        navigator.clipboard.writeText(PIX_COPIA_COLA); 
+        const toast = document.getElementById('toast');
+        toast.classList.remove('hidden');
+        setTimeout(() => toast.classList.add('hidden'), 3000);
     }
-}
+    
+    function mostrarStep2() {
+        document.getElementById('step1').classList.add('hidden');
+        document.getElementById('step2').classList.remove('hidden');
+    }
+    
+    function validarToken() { 
+        const token = document.getElementById('tokenInput').value;
+        if (token === TOKEN_VALIDO) {
+            window.location.href = 'https://matiasbernardo8888-lab.github.io/acessoINVEST/';
+        } else {
+            alert('Código inválido! Paga o Pix primeiro.');
+        }
+    }
+</script>
