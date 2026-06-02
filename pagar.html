@@ -24,7 +24,11 @@
         const TOKEN_VALIDO = "MATIAS44";
         function copiarPix() { navigator.clipboard.writeText(PIX_COPIA_COLA); const toast = document.getElementById('toast'); toast.classList.remove('hidden'); setTimeout(() => toast.classList.add('hidden'), 2000); }
         function mostrarStep2() { document.getElementById('step1').classList.add('hidden'); document.getElementById('step2').classList.remove('hidden'); document.getElementById('tokenInput').focus(); }
-        function validarToken() { const token = document.getElementById('tokenInput').value.trim().toUpperCase(); if (token === TOKEN_VALIDO) { window.location.href = 'index.html?liberado=' + token; } else { alert('Código inválido. Confere no WhatsApp com o Bernardo.'); } }
-    </script>
-</body>
-</html>
+    const token = document.getElementById('tokenInput').value;
+    if (token === TOKEN_VALIDO) {
+        // Se o código tiver certo, manda pro site novo
+        window.location.href = 'https://matiasbernardo8888-lab.github.io/matias-invest-liberado/';
+    } else {
+        alert('Código inválido! Paga o Pix primeiro.');
+    }
+}
