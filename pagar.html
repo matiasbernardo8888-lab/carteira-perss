@@ -1,7 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento - Acesso INVEST</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md">
+        <div class="bg-gray-800 rounded-2xl p-8 shadow-2xl border border-gray-700">
+            <div class="text-center mb-6">
+                <h1 class="text-3xl font-bold text-yellow-400">Acesso INVEST</h1>
+                <p class="text-gray-400 mt-2">Libere seu acesso por R$ 44,90</p>
+            </div>
+
+            <div id="step1">
+                <p class="text-center text-gray-300 mb-6">1. Copie o código Pix abaixo</p>
+                <button onclick="copiarPix()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2">
+                    <i data-lucide="copy"></i> Copiar Código Pix
+                </button>
+                <p class="text-center text-gray-300 my-6">2. Pague no seu app do banco</p>
+                <button onclick="mostrarStep2()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2">
+                    <i data-lucide="check-circle"></i> Já Paguei, Liberar Acesso
+                </button>
+            </div>
+
+            <div id="step2" class="hidden">
+                <p class="text-center text-gray-300 mb-4">Digite o código que você recebeu após o pagamento:</p>
+                <input id="tokenInput" type="text" placeholder="MATIAS44" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3 text-center text-lg mb-4">
+                <button onclick="validarToken()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg">
+                    Validar Código
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="hidden fixed bottom-5 right-5 bg-green-500 text-white py-2 px-4 rounded-lg">
+        Código Pix copiado!
+    </div>
+
 <script>
     lucide.createIcons();
     
-    const PIX_COPIA_COLA = "00020101021126580014br.gov.bcb.pix0136bee17ddb-eaf7-4f23-b50e-b35da280cd5d520400005303986540544.905802BR5920BERNARDO M B PEREIRA6013BELO HORIZONT62070503***63048363";
+    const PIX_COPIA_COLA = "00020101021126580014br.gov.bcb.pix0136cae7-4f23-b50e-b35d28cc65d204000053039865802BR5925MATIAS BERNARDO DA SILVA6009SAO PAULO61080540900062070503***6304";
     const TOKEN_VALIDO = "MATIAS44";
     
     function copiarPix() { 
@@ -25,3 +67,5 @@
         }
     }
 </script>
+</body>
+</html>
